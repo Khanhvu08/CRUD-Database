@@ -42,33 +42,37 @@ app.get("/add", async (req, res) => {
     console.log(error);
   }
 });
-app.get("/update", async (req, res) => {
-  try {
-    await mongoose.connect(config.uri);
+// app.get("/update", async (req, res) => {
+//   try {
+//     await mongoose.connect(config.uri);
 
-    await userModel.updateOne({age:21}, {age:61})
-     console.log('cap nhat thanh cong');
-     const labModels = await userModel.find();
-    res.send(JSON.stringify(labModels))
+//     await userModel.updateOne({age:21}, {age:61})
+//     // 3 tham so
+//     // upsert: thêm bản ghi mới, nếu điều kiện không tìm thấy 
+//     // await userModel.updateOne({age:21}, {$set:{age:61}},{upsert:true})
+    
+//      console.log('cap nhat thanh cong');
+//      const labModels = await userModel.find();
+//     res.send(JSON.stringify(labModels))
 
-  } catch (error) {
-    console.log(error);
-  }
-});
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
-app.get("/delete", async (req, res) => {
-  try {
-    await mongoose.connect(config.uri);
+// app.get("/delete", async (req, res) => {
+//   try {
+//     await mongoose.connect(config.uri);
 
-      await userModel.deleteOne({age:36})
-     console.log('xoa thanh cong');
-     const labModels = await userModel.find();
-    res.send(JSON.stringify(labModels))
+//       await userModel.deleteOne({age:36})
+//      console.log('xoa thanh cong');
+//      const labModels = await userModel.find();
+//     res.send(JSON.stringify(labModels))
 
-  } catch (error) {
-    console.log(error);
-  }
-});
+//   } catch (error) {
+//     console.log(error);
+//   }
+// });
 
 app.listen(port, (err) =>
   console.log(`Server listening on http://localhost:${port}`)
